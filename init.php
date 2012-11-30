@@ -27,7 +27,7 @@ function register_expand_button($buttons) {
  
 // Load the TinyMCE plugin : editor_plugin.js (wp2.5)
 function add_expand_tinymce_plugin($plugin_array) {
-   $plugin_array['expandbutton'] = WP_PLUGIN_URL.'/expand/editor_plugin.js';
+   $plugin_array['expandbutton'] = WP_PLUGIN_URL.'/wp-expand/editor_plugin.js';
    return $plugin_array;
 }
  
