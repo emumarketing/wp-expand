@@ -5,13 +5,12 @@
 				title : 'Expand Section',
 				image : url+'/expand.png',
 				onclick : function() {
-				  // TODO: This needs to be a toggle on/off
-				  ed.formatter.register('expandformat', {
-				    inline: 'div',
-				    classes: 'expand'
-				  });
+					ed.formatter.register('expandformat', {
+						block: 'div',
+						classes: 'expand'
+					});
 
-				  ed.formatter.toggle('expandformat');
+					ed.formatter.toggle('expandformat');
 				}
 			});
 		},
