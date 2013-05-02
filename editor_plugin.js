@@ -5,12 +5,34 @@
 				title : 'Expand Section',
 				image : url+'/expand.png',
 				onclick : function() {
-					ed.formatter.register('expandformat', {
-						block: 'div',
-						classes: 'expand'
-					});
+          var dom = ed.dom;
+          var selection = ed.selection;
+          var range = dom.createRng();
 
-					ed.formatter.toggle('expandformat');
+          range.setStartBefore(dom.getParent(selection.getStart(), dom.isBlock));
+          range.setEndAfter(dom.getParent(selection.getEnd(), dom.isBlock));
+
+          var parentExpand = range.commonAncestorContainer;
+          while(!(/\bexpand\b/.test(parentExpand.className) || /\bmceContentBody\b/.test(parentExpand.className))){
+            parentExpand = parentExpand.parentElement;
+          }
+          temp = parentExpand;
+
+          if(/\bexpand\b/.test(parentExpand.className)){
+            console.log(parentExpand);
+            jQuery(parentExpand).children().each((function(key, taco){
+              parentExpand.parentElement.insertBefore(taco, parentExpand);
+              this.counter -= 1;
+              if(this.counter <=0 ){
+                parentExpand.remove();
+              }
+            }).bind({counter:parentExpand.children.length}));
+          } else {
+          console.log(parentExpand.className);
+            var expandDiv = document.createElement('div');
+            expandDiv.classList.add('expand');
+            range.surroundContents(expandDiv);
+          }
 				}
 			});
 		},
