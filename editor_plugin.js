@@ -15,27 +15,29 @@
           var parentExpand = range.commonAncestorContainer;
           while(!(/\bexpand\b/.test(parentExpand.className) || /\bmceContentBody\b/.test(parentExpand.className))){
             parentExpand = parentExpand.parentElement;
-          }
-          temp = parentExpand;
-
-          if(/\bexpand\b/.test(parentExpand.className)){
-            console.log(parentExpand);
-            jQuery(parentExpand).children().each((function(key, taco){
-              parentExpand.parentElement.insertBefore(taco, parentExpand);
-              this.counter -= 1;
-              if(this.counter <=0 ){
-                parentExpand.remove();
-              }
-            }).bind({counter:parentExpand.children.length}));
-          } else {
-          console.log(parentExpand.className);
-            var expandDiv = document.createElement('div');
-            expandDiv.classList.add('expand');
-            range.surroundContents(expandDiv);
-          }
-				}
-			});
-		},
+          };
+          try{
+            if(/\bexpand\b/.test(parentExpand.className)){
+              jQuery(parentExpand).children().each(
+                (function(key, taco){
+                  parentExpand.parentElement.insertBefore(taco, parentExpand);
+                  this.counter -= 1;
+                  if(this.counter <=0 ){
+                    parentExpand.remove();
+                  }
+                }).bind({counter:parentExpand.children.length})
+              );
+            } else {
+              var expandDiv = document.createElement('div');
+              expandDiv.classList.add('expand');
+              range.surroundContents(expandDiv);
+            }
+        } catch(err) {
+          alert('You can not straddle the beginning or end of a expand section with another expand section!');
+        };
+			}
+    });
+  },
 		createControl : function(n, cm) {
 			return null;
 		},
