@@ -18,7 +18,7 @@
   -o-transition: background 0.1s ease-in-out;
   transition: background 0.1s ease-in-out;
 }
-.expand.close h3 {
+.expand.close h3, .expand.close h2 {
   color: #444;
   border-bottom: none;
   -moz-transition: color 0.1s ease-in-out;
@@ -33,13 +33,13 @@
 .expand.close:hover {
   background: rgba(0, 79, 39, 0.03);
 }
-.expand.close:hover h3 {
+.expand.close:hover h3, .expand.close:hover h2 {
   color: #004f27;
 }
 .expand.close:hover .handle {
   opacity: .6;
 }
-.expand h3 {
+.expand h3, .expand h2 {
   color: #004f27;
   cursor: pointer;
   font-weight: 600;
