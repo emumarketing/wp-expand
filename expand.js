@@ -1,9 +1,9 @@
 jQuery(document).ready(function() {
   // Expand toggle
   jQuery('.expand').addClass('close');
-  jQuery('.expand h3').append('<span class="handle"><i class="icon-chevron-right"></i></span>');
+  jQuery('.expand h3, .expand h2').append('<span class="handle"><i class="icon-chevron-right"></i></span>');
   
-  jQuery('.expand h3').click(function() {
+  jQuery('.expand h3, .expand h2').click(function() {
       var $this = jQuery(this).parent('.expand');
       var curHeight = jQuery($this).height();
       
