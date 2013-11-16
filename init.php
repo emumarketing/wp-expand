@@ -52,7 +52,8 @@ function register_extras() {
 }
 
 // init process for button control
-add_filter( 'tiny_mce_version', 'my_refresh_mce');
+add_filter('tiny_mce_version', 'my_refresh_mce');
+add_filter('mce_css', 'add_mce_style');
 add_action('init', 'add_expand_button');
 add_action('wp_enqueue_scripts', 'register_extras');
 ?>
